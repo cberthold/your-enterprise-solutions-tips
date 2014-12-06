@@ -11,14 +11,20 @@ controllers.controller('ListContactCtlr', ['$scope', '$q', 'Contact',
         $scope.user = null;
 
         $scope.addContact = function () {
+
+            $("#addContactModal").modal({ keyboard: false, show: true, backdrop: 'static' });
+            
             getSingleContactAndShowModal().then(
                 // resolve
-                function (data) {
-                    alert('accepted');
+                function (user) {
+                    $("#addContactModal").modal('hide');
+                    $scope.list.push(user);
+                    //alert('accepted');
                 },
                 // reject
-                function (data) {
-                    alert('rejected');
+                function (user) {
+                    $("#addContactModal").modal('hide');
+                    //alert('rejected');
                 });
         };
 

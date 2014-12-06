@@ -13,8 +13,8 @@
     <link rel="stylesheet" href="Content/bootstrap.css" type="text/css" />
     <link rel="stylesheet" href="Content/bootstrap-theme.css" type="text/css" />
 </head>
-<body>
-    <div class="container well well-lg" ng-controller="ListContactCtlr">
+<body ng-controller="ListContactCtlr">
+    <div class="container well well-lg">
         <div class="row">
             <div class="col-xs-2">
 
@@ -25,12 +25,42 @@
                         <h3 class="panel-title">Contacts</h3>
                     </div>
                     <div class="panel-body">
-
+                        <div class="row">
+                            <span class="col-xs-3">First Name</span>
+                            <span class="col-xs-3">Last Name</span>
+                            <span class="col-xs-3">Photo</span>
+                            <span class="col-xs-3">Actions</span>
+                        </div>
+                        <div class="row" ng-repeat="user in list">
+                            <span class="col-xs-3">{{user.name.first}}</span>
+                            <span class="col-xs-3">{{user.name.last}}</span>
+                            <span class="col-xs-3"><img width="40" height="40" src="{{user.picture.thumbnail}}" alt="Image of {{user.name.first}} {{user.name.last}}"></span>
+                            <span class="col-xs-3"></span>
+                        </div>
                     </div>
+                    <div class="panel-footer"><button type="button" class="btn btn-primary" ng-click="addContact()">Add Contact</button></div>
                 </div>
             </div>
             <div class="col-xs-2">
 
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="addContactModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                </div>
+                <div class="modal-body">
+                   
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" ng-click="cancelContact()">Cancel</button>
+                    <button type="button" class="btn btn-primary" ng-click="confirmContact()">Add Contact</button>
+                </div>
             </div>
         </div>
     </div>
