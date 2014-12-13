@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApiAuthentication.Api", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApiAuthentication.Api.Tests", "WebApiAuthentication.Api.Tests\WebApiAuthentication.Api.Tests.csproj", "{BD203977-E16A-4A12-9E7A-49C44C6D661E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApiAuthentication.Business", "WebApiAuthentication.Business\WebApiAuthentication.Business.csproj", "{59684DE5-03C7-420D-A3EC-FD41ECEEB768}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApiAuthentication.Common", "WebApiAuthentication.Common\WebApiAuthentication.Common.csproj", "{7E059FF7-9587-4208-9DAB-86A7C865FCEA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{BD203977-E16A-4A12-9E7A-49C44C6D661E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BD203977-E16A-4A12-9E7A-49C44C6D661E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BD203977-E16A-4A12-9E7A-49C44C6D661E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{59684DE5-03C7-420D-A3EC-FD41ECEEB768}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{59684DE5-03C7-420D-A3EC-FD41ECEEB768}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{59684DE5-03C7-420D-A3EC-FD41ECEEB768}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{59684DE5-03C7-420D-A3EC-FD41ECEEB768}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7E059FF7-9587-4208-9DAB-86A7C865FCEA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7E059FF7-9587-4208-9DAB-86A7C865FCEA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7E059FF7-9587-4208-9DAB-86A7C865FCEA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7E059FF7-9587-4208-9DAB-86A7C865FCEA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
