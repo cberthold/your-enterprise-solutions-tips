@@ -17,7 +17,7 @@ namespace WebApiAuthentication.Common.Configuration
         private ConcurrentDictionary<string, object> cacheObject = new ConcurrentDictionary<string, object>();
         private Type thisType = typeof(TConfig);
 
-        protected T GetAndStoreValue<T>(Expression<Func<TConfig, T>> configProperty, Func<T> action)
+        protected T GetAndStoreValue<T>(Expression<Func<TConfig, T>> configProperty, Func<string, T> action)
         {
             // get the configuration property
             var property = ReflectionHelper.FindProperty(configProperty);
@@ -30,9 +30,9 @@ namespace WebApiAuthentication.Common.Configuration
             var propertyName = property.Name;
 
             // try or get property via action
-            var returnValue = (T)cacheObject.GetOrAdd(propertyName, (p) =>
-            {  
-                return action.Invoke();
+            var returnValue = (T)cacheObject.GetOrAdd(propertyName, (propName) =>
+            {
+                return action.Invoke(propName);
             });
             
             return returnValue;

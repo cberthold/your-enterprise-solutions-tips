@@ -7,14 +7,14 @@ using WebApiAuthentication.Common.Configuration;
 
 namespace WebApiAuthentication.Business.Common
 {
-    public class AppConfiguration : BaseConfiguration<AppConfiguration>
+    public sealed class AppConfiguration : BaseConfiguration<AppConfiguration>
     {
 
         public bool AllowInsecureHttp { 
             get {
-                return GetAndStoreValue(a => a.AllowInsecureHttp, () =>
+                return GetAndStoreValue(a => a.AllowInsecureHttp, (prop) =>
                 {
-                    return GetOrDefaultBoolean("AllowInsecureHttp");
+                    return GetOrDefaultBoolean(prop);
                 });
             } 
         }
@@ -23,9 +23,9 @@ namespace WebApiAuthentication.Business.Common
         {
             get
             {
-                return GetAndStoreValue(a => JwtSigningKey, () =>
+                return GetAndStoreValue(a => JwtSigningKey, (prop) =>
                 {
-                    return GetOrDefaultstring("JwtSigningKey", "random signing key");
+                    return GetOrDefaultstring(prop, "random signing key");
                 });
             }
         }
