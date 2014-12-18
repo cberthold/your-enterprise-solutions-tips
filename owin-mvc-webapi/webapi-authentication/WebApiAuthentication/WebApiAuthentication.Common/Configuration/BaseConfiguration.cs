@@ -1,7 +1,7 @@
 ﻿using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Configuration;
-using System.Dynamic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
@@ -14,25 +14,28 @@ namespace WebApiAuthentication.Common.Configuration
     public abstract class BaseConfiguration<TConfig>
         where TConfig : BaseConfiguration<TConfig>
     {
-
-        private dynamic ConfigurationCache = new ExpandoObject();
+        private ConcurrentDictionary<string, object> cacheObject = new ConcurrentDictionary<string, object>();
         private Type thisType = typeof(TConfig);
 
-        protected T GetAndStoreValue<T>(Expression<Func<TConfig, object>> configProperty, Func<T> action)
+        protected T GetAndStoreValue<T>(Expression<Func<TConfig, T>> configProperty, Func<T> action)
         {
             // get the configuration property
             var property = ReflectionHelper.FindProperty(configProperty);
 
-            if(property == null)
+            if (property == null)
             {
                 throw new ArgumentException("configProperty expression must evaluate to a property of the configuration class");
             }
             // get the property name from the memberinfo
             var propertyName = property.Name;
 
-            T value = action.Invoke();
-
-            return value;
+            // try or get property via action
+            var returnValue = (T)cacheObject.GetOrAdd(propertyName, (p) =>
+            {  
+                return action.Invoke();
+            });
+            
+            return returnValue;
 
         }
 
@@ -163,9 +166,9 @@ namespace WebApiAuthentication.Common.Configuration
 
         protected string GetApplicationKey(string key)
         {
-           string returnValue = ConfigurationManager.AppSettings[key];
+            string returnValue = ConfigurationManager.AppSettings[key];
 
-           return returnValue;
+            return returnValue;
         }
     }
 }
