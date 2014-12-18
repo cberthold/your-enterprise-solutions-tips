@@ -10,26 +10,6 @@ namespace WebApiAuthentication.Business.Common
     public sealed class AppConfiguration : BaseConfiguration<AppConfiguration>
     {
 
-        public bool AllowInsecureHttp { 
-            get {
-                return GetAndStoreValue(a => a.AllowInsecureHttp, (prop) =>
-                {
-                    return GetOrDefaultBoolean(prop);
-                });
-            } 
-        }
-
-        public string JwtSigningKey
-        {
-            get
-            {
-                return GetAndStoreValue(a => JwtSigningKey, (prop) =>
-                {
-                    return GetOrDefaultstring(prop, "random signing key");
-                });
-            }
-        }
-        
         private AppConfiguration() { }
 
         public static AppConfiguration Current
@@ -41,6 +21,10 @@ namespace WebApiAuthentication.Business.Common
             }
         }
 
-        
+        public bool AllowInsecureHttp { get { return GetAndStoreValue(a => a.AllowInsecureHttp, false); } }
+
+        public string TokenEndpointPath { get { return GetAndStoreValue(a => TokenEndpointPath, "/auth/token"); } }
+
+        public double AccessTokenExpireTimeSpan { get { return GetAndStoreValue(a => a.AccessTokenExpireTimeSpan, 1800); } }
     }
 }

@@ -107,6 +107,14 @@
       <Project>{69F6E70D-7E9D-45E9-A3C3-B81015CF4F4D}</Project>
       <Name>WebApiAuthentication.Api</Name>
     </ProjectReference>
+    <ProjectReference Include="..\WebApiAuthentication.Business\WebApiAuthentication.Business.csproj">
+      <Project>{59684de5-03c7-420d-a3ec-fd41eceeb768}</Project>
+      <Name>WebApiAuthentication.Business</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WebApiAuthentication.Common\WebApiAuthentication.Common.csproj">
+      <Project>{7e059ff7-9587-4208-9dab-86a7c865fcea}</Project>
+      <Name>WebApiAuthentication.Common</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
